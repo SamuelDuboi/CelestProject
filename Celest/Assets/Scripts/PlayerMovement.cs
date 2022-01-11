@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                moveDire 
+                moveDirection = 0;
             }
 
             if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow))
@@ -124,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
           
         }
+        //
     }
     IEnumerator test()
     {
