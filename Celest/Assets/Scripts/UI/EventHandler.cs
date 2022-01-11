@@ -16,6 +16,8 @@ public class EventHandler : MonoBehaviour
     {
         if (instance == null)
         {
+            DontDestroyOnLoad(gameObject);
+
             instance = this;
             return;
         }

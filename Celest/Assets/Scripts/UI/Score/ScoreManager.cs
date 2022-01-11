@@ -9,6 +9,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (instance == null)
         {
+            DontDestroyOnLoad(gameObject);
+
             instance = this;
             return;
         }
