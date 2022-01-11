@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    private ScoreHandler scoreHandler;
     public static ScoreManager instance;
     private void Awake()
     {
@@ -22,11 +21,11 @@ public class ScoreManager : MonoBehaviour
 
     public void ChangeScore(int scoreToAdd)
     {
-        scoreHandler.score += scoreToAdd;
+        GameState.score += scoreToAdd;
     }
 
     public int DisplayScore()
     {
-        return scoreHandler.score;
+        return GameState.score;
     }
 }

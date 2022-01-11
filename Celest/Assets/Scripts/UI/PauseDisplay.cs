@@ -15,13 +15,20 @@ public class PauseDisplay : MonoBehaviour
     private void Activate()
     {
         pauseBackground.SetActive(true);
+        GameState.isPaused = true;
     }
     private void Desactivate()
     {
+        GameState.isPaused = false;
         pauseBackground.SetActive(false);
     }
     public void UnPause()
     {
         EventHandler.instance.OnUnPause.Invoke();
+    }
+    public void Menu()
+    {
+        SceneManagement.instance.LoadScene(0);
+
     }
 }
