@@ -4,14 +4,15 @@ using System.Collections;
 public class GlobalPanel : MonoBehaviour
 {
     public Image panel;
-
+    public float lenght = 5;
     private void Start()
     {
-        LaunchFade(5f);
+        EventHandler.instance.OnGameOver += LaunchFade;
+        EventHandler.instance.OnDeath += LaunchFade;
     }
-    void LaunchFade(float timer)
+    void LaunchFade()
     {
-        StartCoroutine(Fade(timer));
+        StartCoroutine(Fade(lenght));
     }
     IEnumerator Fade(float timer)
     {

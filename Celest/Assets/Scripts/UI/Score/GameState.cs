@@ -1,4 +1,5 @@
 using UnityEngine;
+[System.Serializable]
 public static class GameState 
 {
     public static int score =0;

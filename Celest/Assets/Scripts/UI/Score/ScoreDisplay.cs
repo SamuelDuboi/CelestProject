@@ -12,12 +12,12 @@ public class ScoreDisplay : MonoBehaviour
     private bool isRed;
     void Start()
     {
-        StartCoroutine(ScoreUpCoroutine());
+        EventHandler.instance.OnScoreUp += ScoreUp;
     }
    
     private void ScoreUp(int value)
     {
-
+        StartCoroutine(ScoreUpCoroutine());
     }
     IEnumerator ScoreUpCoroutine()
     {

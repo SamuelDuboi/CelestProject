@@ -9,6 +9,7 @@ public class EventHandler : MonoBehaviour
     public UnityAction<int> OnScoreUp;
     public UnityAction OnDeath;
     public UnityAction OnGameOver;
+    public UnityAction OnSave;
 
     public static EventHandler instance;
     private void Awake()
