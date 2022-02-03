@@ -30,7 +30,7 @@ public class SceneManagement : MonoBehaviour
     IEnumerator WaitToLoad()
     {
         sceneLoading.allowSceneActivation = false;
-       yield return new WaitUntil(() => sceneLoading.progress > 0.89);
+        yield return new WaitUntil(() => sceneLoading.progress > 0.89);
         sceneLoading.allowSceneActivation = true;
     }
 

@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="ButtonUss.uss" />
+    <ui:VisualElement style="background-image: url(&apos;/Assets/Sprites/BackGround.jpg#BackGround&apos;); height: 514px; width: 615px; -unity-background-scale-mode: stretch-to-fill; align-items: center; flex-direction: row;">
+        <ui:VisualElement>
+            <ui:Button display-tooltip-when-elided="true" name="PlayButton" class="defaultButton MyDefaultButton" style="background-image: url(&apos;/Assets/Sprites/Climb.png#Climb&apos;); -unity-background-scale-mode: scale-to-fit; height: 88px; font-size: 24px; color: rgb(255, 255, 255); width: 351px; background-color: rgba(255, 255, 255, 0); margin-bottom: 0; margin-top: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; align-items: center; justify-content: center; display: flex;" />
+            <ui:Label text="Climb" display-tooltip-when-elided="true" class="ButtonLabel" style="position: absolute; left: 85px; top: 66px; font-size: 22px; -unity-font: url(&apos;/Assets/TextMesh Pro/Fonts/Renogare-Regular.otf&apos;);" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" class="MyDefaultButton" />
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" class="defaultButton" style="background-image: url(&apos;/Assets/Art/UI/Selected.png#Selected&apos;); -unity-background-scale-mode: scale-to-fit; height: 92px; font-size: 24px; color: rgb(255, 255, 255); width: 351px; background-color: rgba(255, 255, 255, 0); margin-bottom: 0; margin-top: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; align-items: flex-start; justify-content: space-between;" />
+        </ui:VisualElement>
+        <ui:VisualElement />
+    </ui:VisualElement>
+    <ui:VisualElement name="Settings" style="width: 100%; height: 100%; position: absolute; visibility: visible; display: none; background-image: url(&apos;/Assets/Art/UI/Background.png#Background&apos;); background-color: rgba(0, 0, 0, 0.45); -unity-background-image-tint-color: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center;">
+        <ui:Button text="Volume" display-tooltip-when-elided="true" name="VolumeButton" class="MyDefaultButton" style="width: 605px;" />
+        <ui:Button text="Menu" display-tooltip-when-elided="true" name="MenuButton" class="MyDefaultButton" style="width: 605px;" />
+        <ui:Button text="Resolution" display-tooltip-when-elided="true" name="ResolutionButton" class="MyDefaultButton" style="width: 605px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="VolumeCanvas" style="width: 100%; height: 100%; position: absolute; visibility: visible; display: none; background-image: url(&apos;/Assets/Art/UI/Background.png#Background&apos;); background-color: rgba(0, 0, 0, 0.45); -unity-background-image-tint-color: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; top: -2px; left: 1px;">
+        <ui:VisualElement name="Slider" style="flex-direction: row;">
+            <ui:Label text="MainVolume" display-tooltip-when-elided="true" name="SliderName" style="font-size: 26px; -unity-text-align: middle-center;" />
+            <ui:VisualElement name="Track" style="background-image: url(&apos;/Assets/Art/UI/Dialogue.png#Dialogue&apos;); width: 286px; height: 66px;" />
+            <ui:VisualElement name="ButtonSlider" style="background-image: url(&apos;/Assets/Art/UI/Handle.png#Handle&apos;); width: 70px; height: 71px; position: absolute; left: 36%;" />
+        </ui:VisualElement>
+        <ui:Button text="Setting" display-tooltip-when-elided="true" name="SettingsButton" class="MyDefaultButton" style="width: 605px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ResolutionCanvas" style="width: 100%; height: 100%; position: absolute; visibility: visible; display: none; background-image: url(&apos;/Assets/Art/UI/Background.png#Background&apos;); background-color: rgba(0, 0, 0, 0.45); -unity-background-image-tint-color: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; top: -2px; left: 1px;">
+        <ui:DropdownField label="Resolution" index="-1" choices="System.Collections.Generic.List`1[System.String]" class="DopDown DropDown" style="width: 67%; height: 11%; font-size: 30px; -unity-text-align: middle-left;" />
+        <ui:Button text="Setting" display-tooltip-when-elided="true" name="SettingsButton" class="MyDefaultButton" style="width: 605px;" />
+    </ui:VisualElement>
+</ui:UXML>

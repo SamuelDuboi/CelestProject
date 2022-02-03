@@ -14,6 +14,12 @@ public class PauseDisplay : MonoBehaviour
 
     private void Activate()
     {
+        if(pauseBackground ==null)
+        {
+            EventHandler.instance.OnPause -= Activate;
+            EventHandler.instance.OnUnPause -= Desactivate;
+            return;
+        }
         pauseBackground.SetActive(true);
         GameState.isPaused = true;
     }
@@ -29,6 +35,7 @@ public class PauseDisplay : MonoBehaviour
     public void Menu()
     {
         SceneManagement.instance.LoadScene(0);
-
+        EventHandler.instance.OnPause -= Activate;
+        EventHandler.instance.OnUnPause -= Desactivate;
     }
 }
