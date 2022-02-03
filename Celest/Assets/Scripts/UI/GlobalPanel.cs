@@ -7,7 +7,7 @@ public class GlobalPanel : MonoBehaviour
     public float lenght = 5;
     private void Start()
     {
-        EventHandler.instance.OnGameOver += LaunchFade;
+        EventHandler.instance.OnTakeDamage += LaunchFade;
         EventHandler.instance.OnDeath += LaunchFade;
     }
     void LaunchFade()

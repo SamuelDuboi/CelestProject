@@ -17,6 +17,17 @@ public class LifeManager : MonoBehaviour
     void Start()
     {
         EventHandler.instance.OnDeath += OnDeath;
+        EventHandler.instance.OnTakeDamage += OnTakeDamage;
     }
+    void OnTakeDamage()
+    {
+        GameState.currentLife--;
+        if (GameState.currentLife==0)
+        {
+            EventHandler.instance.OnDeath();
+            return;
+        }
+        lifeImages[GameState.currentLife-1].SetActive(false);
         
+    }
 }

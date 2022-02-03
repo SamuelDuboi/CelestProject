@@ -8,7 +8,7 @@ public class EventHandler : MonoBehaviour
     public UnityAction OnUnPause;
     public UnityAction<int> OnScoreUp;
     public UnityAction OnDeath;
-    public UnityAction OnGameOver;
+    public UnityAction OnTakeDamage;
     public UnityAction OnSave;
 
     public static EventHandler instance;

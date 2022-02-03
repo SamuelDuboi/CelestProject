@@ -9,6 +9,6 @@ public static class GameState
     public static int currentCheckPoint;
     public static bool isPaused;
 
-    public static int currentLife;
+    public static int currentLife = 3;
 
 }
