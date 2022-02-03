@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Check IsGrounded
+        Debug.DrawRay(new Vector3(MyTransform.position.x, MyTransform.position.y - ChangeHeight, MyTransform.position.z), -Vector3.up,Color.black, 0.1f);
         if (Physics2D.Raycast(new Vector3(MyTransform.position.x, MyTransform.position.y - ChangeHeight, MyTransform.position.z), -Vector3.up, 0.1f, 3))
         {
             if (isJumping)
@@ -135,8 +136,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("KillPlayer"))
         {
-            Gm.GameOver();
-            Debug.Log("DEAD");
+            //Gm.GameOver();
+            //lose one Hp + respawn au dernier point de sauvegarde
+            //si plus de Hp, retour au début du niveau
+        }
+        if (collision.CompareTag("DashRecover"))
+        {
+            Destroy(collision.gameObject);
+            CanDash = true;
+        }
+        if (collision.CompareTag("Fraise"))
+        {
+            Destroy(collision.gameObject);
+            //NBFraises++
+            //Score++
         }
 
     }
