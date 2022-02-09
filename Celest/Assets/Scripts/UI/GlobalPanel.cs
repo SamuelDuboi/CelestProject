@@ -5,6 +5,7 @@ public class GlobalPanel : MonoBehaviour
 {
     public Image panel;
     public float lenght = 5;
+
     private void Start()
     {
         EventHandler.instance.OnTakeDamage += LaunchFade;
