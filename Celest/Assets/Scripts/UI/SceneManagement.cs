@@ -10,7 +10,6 @@ public class SceneManagement : MonoBehaviour
     {
         if (instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             instance = this;
             return;
         }
