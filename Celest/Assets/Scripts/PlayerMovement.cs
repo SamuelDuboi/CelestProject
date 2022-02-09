@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     Transform MyTransform;
     [SerializeField]
     GameManager Gm;
-
+    [SerializeField]
+    AnimationHandler animationHandler;
     bool isJumping = true;
     bool CanDash = true;
     bool isDashing = false;
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded = false;
     Vector3 cameraPos;
     RaycastHit2D hit;
-    
+    bool falling;
     void Start()
     {
         MyRigidBody2D.gravityScale = gravityScale;
@@ -45,16 +46,33 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        #region     Movement controls
         if (!isDashing)
         {
-            moveDirection = 0;
-        
-            // Movement controls
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
-                moveDirection = Input.GetKey(KeyCode.LeftArrow) ? -1 : 1;
+                if (Input.GetKey(KeyCode.LeftArrow) && moveDirection != -1)
+                {
+                    if(isGrounded)
+                        animationHandler.Run();
+                    moveDirection = -1;
+                    animationHandler.Flip(true);
+                }
+                else if(Input.GetKey(KeyCode.RightArrow) && moveDirection != 1)
+                {
+                    if (isGrounded)
+                        animationHandler.Run();
+                    moveDirection = 1;
+                    animationHandler.Flip(false);
+                }
+            }
+            else if(moveDirection != 0)
+            {
+                animationHandler.Idle();
+                moveDirection = 0;
             }
         }
+            #endregion
 
         //Check IsGrounded
         Debug.DrawRay(new Vector3(MyTransform.position.x, MyTransform.position.y - ChangeHeight, MyTransform.position.z), -Vector3.up,Color.black, 0.1f);
@@ -66,19 +84,27 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = false;
                 isDashing = false;
                 CanDash = true;
+                animationHandler.TouchGround();
             }
         }
         else
         {
             isJumping = true;
+            if(!falling&&MyRigidBody2D.velocity.y<0 )
+            {
+                falling = true;
+                animationHandler.Fall();
+            }
         }
 
         // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && isJumping == false)
         {
+            animationHandler.Jump();
             MyRigidBody2D.velocity = new Vector2(MyRigidBody2D.velocity.x, jumpHeight);
             isGrounded = false;
             isJumping = true;
+            falling = false;
         }
 
         // Camera follow
@@ -98,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
             isDashing = true;
             MyRigidBody2D.gravityScale = 0;
             MyRigidBody2D.velocity = Vector2.zero;
-
+            animationHandler.Dash();
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
                 moveDirection = Input.GetKey(KeyCode.LeftArrow) ? -1 : 1;
@@ -129,13 +155,14 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         MyRigidBody2D.gravityScale = gravityScale;
-        isDashing = false; 
-
+        isDashing = false;
+        animationHandler.TouchGround();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("KillPlayer"))
         {
+            EventHandler.instance.OnTakeDamage.Invoke();
             //Gm.GameOver();
             //lose one Hp + respawn au dernier point de sauvegarde
             //si plus de Hp, retour au début du niveau

@@ -6,6 +6,7 @@ public class PauseDisplay : MonoBehaviour
 {
     public GameObject pauseBackground;
     // Start is called before the first frame update
+
     void Start()
     {
         EventHandler.instance.OnPause += Activate;
