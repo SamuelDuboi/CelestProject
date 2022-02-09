@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 486253914260759716}
   - component: {fileID: 486253914260759719}
   - component: {fileID: 486253914260759718}
+  - component: {fileID: 3144164276359334365}
+  - component: {fileID: 4904001274952540383}
   m_Layer: 0
   m_Name: Fraise
   m_TagString: Fraise
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -1282973469861213660, guid: 2ba634aa4a30f1a4e9cf9361dbd7375e, type: 3}
   m_Color: {r: 0.6226415, g: 0.35874844, b: 0.16153437, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,3 +102,34 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &3144164276359334365
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486253914260759737}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40740cac474592c478b79a6334486917, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4904001274952540383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486253914260759737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076c8718ae7e59e4ba76abc45ba4e1d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

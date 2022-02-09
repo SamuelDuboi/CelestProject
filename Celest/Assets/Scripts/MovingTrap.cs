@@ -28,7 +28,7 @@ public class MovingTrap : MonoBehaviour
             //Vu que j'en au moins un j'initialise la position de ma plateforme
             //à l'endroit où se trouve mon premier point
             self.SetPositionAndRotation(Path[0].transform.position, Path[0].transform.rotation);
-
+        
     }
 
     // Update is called once per frame
@@ -38,8 +38,7 @@ public class MovingTrap : MonoBehaviour
         //Sinon tu ne peux pas bouger
 
         //Ma direction c'est le vecteur (posTarget - posInit)
-        Vector3 dir = Path[ActualTarget].transform.position - transform.position;
-        dir.z = 0;
+        Vector2 dir = Path[ActualTarget].transform.position - transform.position;
         //Je bouge mon bloc dans cette direction, la vitesse = spped *temps écoulé
         transform.Translate(dir.normalized * speed * Time.deltaTime);
         ;
