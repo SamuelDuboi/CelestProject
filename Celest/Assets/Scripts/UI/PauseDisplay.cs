@@ -33,6 +33,12 @@ public class PauseDisplay : MonoBehaviour
     {
         EventHandler.instance.OnUnPause.Invoke();
     }
+    public void Reaload()
+    {
+        GameState.score = 0;
+        GameState.currentLife = 3;
+        SceneManagement.instance.LoadScene(1);
+    }
     public void Menu()
     {
         SceneManagement.instance.LoadScene(0);

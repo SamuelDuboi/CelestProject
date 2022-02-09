@@ -192,6 +192,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("CheckPoint"))
         {
             CpM.SetMyCheckPoint(collision.gameObject);
+            collision.GetComponent<Animator>().SetTrigger("Collect");
             Destroy(collision.GetComponent<BoxCollider2D>());
         }
 

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Won
+  m_text: GameOver
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce2cc901d3f78bd40ba223666a90eb5c, type: 2}
   m_sharedMaterial: {fileID: -9001658175448365942, guid: ce2cc901d3f78bd40ba223666a90eb5c, type: 2}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 2935755697017867510}
   - component: {fileID: 9024158628219087862}
   m_Layer: 5
-  m_Name: Finish
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -29,10 +29,13 @@ public class EventHandler : MonoBehaviour
             if (!GameState.isPaused)
             {
                 OnPause.Invoke();
+                Time.timeScale = 0;
             }
             else
             {
                 OnUnPause.Invoke();
+                Time.timeScale = 1;
+
             }
         }
     }
