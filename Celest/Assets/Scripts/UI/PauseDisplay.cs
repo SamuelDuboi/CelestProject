@@ -31,6 +31,7 @@ public class PauseDisplay : MonoBehaviour
     }
     public void UnPause()
     {
+        Time.timeScale = 1;
         EventHandler.instance.OnUnPause.Invoke();
     }
     public void Reaload()
@@ -42,6 +43,9 @@ public class PauseDisplay : MonoBehaviour
     }
     public void Menu()
     {
+        Time.timeScale = 1;
+        GameState.currentLife = 3;
+        GameState.score = 0;
         SceneManagement.instance.LoadScene(0);
         EventHandler.instance.OnPause -= Activate;
         EventHandler.instance.OnUnPause -= Desactivate;
