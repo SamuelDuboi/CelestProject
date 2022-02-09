@@ -7,7 +7,7 @@ using UnityEditor;
 public class CheckPointManagerEditor : Editor
 {
     private CheckPointManager checkPointManager;
-    private void OnEnable()
+    /*private void OnEnable()
     {
         checkPointManager = target as CheckPointManager;
         checkPointManager.checkPoints = new List<CheckPoint>();
@@ -31,5 +31,5 @@ public class CheckPointManagerEditor : Editor
         {
             checkPointManager.checkPoints[i].index = i;
         }
-    }
+    }*/
 }

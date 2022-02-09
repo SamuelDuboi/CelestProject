@@ -174,8 +174,9 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.CompareTag("Fraise"))
         {
-            Destroy(collision.gameObject);
-            //NBFraises++
+            collision.GetComponent<StrawBerryMovement>().Collect();
+            collision.enabled = false;
+            EventHandler.instance.OnScoreUp(1);
             //Score++
         }
 

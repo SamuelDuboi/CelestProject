@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KevinDevRoom.unity
     guid: 4b68051fb12ab8c498ac873f388a1bf6
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 8ba08020055a4964abc6304c8a72be12
   m_configObjects: {}
