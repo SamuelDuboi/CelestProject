@@ -39,8 +39,10 @@ public class MovingTrap : MonoBehaviour
 
         //Ma direction c'est le vecteur (posTarget - posInit)
         Vector3 dir = Path[ActualTarget].transform.position - transform.position;
+        dir.z = 0;
         //Je bouge mon bloc dans cette direction, la vitesse = spped *temps écoulé
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        transform.Translate(dir.normalized * speed * Time.deltaTime);
+        ;
 
         // Si l'ennemi est quasiment arrivé à sa destination
         if (Vector3.Distance(transform.position, Path[ActualTarget].transform.position) < 0.3f)
