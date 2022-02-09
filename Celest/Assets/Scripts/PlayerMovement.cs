@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     // Move player in 2D space
     [Header("Stats")]
     [SerializeField]
+    float NbHp = 3;
+    [SerializeField]
     float maxSpeed = 10;
     [SerializeField]
     float jumpHeight = 10;
@@ -19,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float DashSpeed = 10;
 
+
     [Header("References")]
     [SerializeField]
     Rigidbody2D MyRigidBody2D;
@@ -27,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     GameManager Gm;
     [SerializeField]
+    CheckPointManager CpM;
+    [SerializeField]
     AnimationHandler animationHandler;
     bool isJumping = true;
     bool CanDash = true;
@@ -34,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     float moveDirection = 0;
     float heightDirection = 0;
     bool isGrounded = false;
+    bool lastDirection = true;
     Vector3 cameraPos;
     RaycastHit2D hit;
     bool falling;
@@ -56,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
                     if(isGrounded)
                         animationHandler.Run();
                     moveDirection = -1;
+                    lastDirection = false;
                     animationHandler.Flip(true);
                 }
                 else if(Input.GetKey(KeyCode.RightArrow) && moveDirection != 1)
@@ -63,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
                     if (isGrounded)
                         animationHandler.Run();
                     moveDirection = 1;
+                    lastDirection = true;
                     animationHandler.Flip(false);
                 }
             }
@@ -83,9 +91,9 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = true;
                 isJumping = false;
                 isDashing = false;
-                CanDash = true;
                 animationHandler.TouchGround();
             }
+            CanDash = true;
         }
         else
         {
@@ -136,11 +144,15 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow))
             {
-                heightDirection = Input.GetKey(KeyCode.DownArrow) ? -1 : 1;
+                heightDirection = Input.GetKey(KeyCode.DownArrow) ? -0.7f : 0.7f;
             }
             else
             {
                 heightDirection = 0;
+            }
+            if(moveDirection == 0 && heightDirection == 0)
+            {
+                moveDirection = lastDirection ? 1 : -1;
             }
             MyRigidBody2D.AddForce(new Vector2(moveDirection * DashSpeed, DashSpeed * heightDirection), ForceMode2D.Impulse);
             Debug.DrawRay(new Vector3(MyTransform.position.x, MyTransform.position.y, MyTransform.position.z), new Vector2((moveDirection) * DashSpeed, (moveDirection) * heightDirection) * 10, Color.red, 10.1f);
@@ -163,9 +175,8 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("KillPlayer"))
         {
             EventHandler.instance.OnTakeDamage.Invoke();
-            //Gm.GameOver();
-            //lose one Hp + respawn au dernier point de sauvegarde
-            //si plus de Hp, retour au début du niveau
+            NbHp--;
+            MyTransform.SetPositionAndRotation(CpM.Respawn(NbHp == 0), MyTransform.rotation);
         }
         if (collision.CompareTag("DashRecover"))
         {
@@ -175,9 +186,13 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("Fraise"))
         {
             collision.GetComponent<StrawBerryMovement>().Collect();
-            collision.enabled = false;
             EventHandler.instance.OnScoreUp(1);
-            //Score++
+            collision.enabled = false;
+        }
+        if (collision.CompareTag("CheckPoint"))
+        {
+            CpM.SetMyCheckPoint(collision.gameObject);
+            Destroy(collision.GetComponent<BoxCollider2D>());
         }
 
     }
