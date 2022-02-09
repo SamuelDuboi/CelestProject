@@ -5,12 +5,15 @@ using UnityEngine;
 public class LifeManager : MonoBehaviour
 {
     public List<GameObject> lifeImages;
+    public GameObject gameOver;
     void OnDeath()
     {
         for (int i = lifeImages.Count - 1; i > GameState.currentLife; i--)
         {
             lifeImages[i].SetActive(false);
         }
+        gameOver.SetActive(true);
+        Time.timeScale = 0;
     }
 
     // Start is called before the first frame update

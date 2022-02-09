@@ -175,8 +175,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("KillPlayer"))
         {
             EventHandler.instance.OnTakeDamage.Invoke();
-            NbHp--;
-            MyTransform.SetPositionAndRotation(CpM.Respawn(NbHp == 0), MyTransform.rotation);
+            MyTransform.SetPositionAndRotation(CpM.Respawn(GameState.currentLife == 0), MyTransform.rotation);
         }
         if (collision.CompareTag("DashRecover"))
         {

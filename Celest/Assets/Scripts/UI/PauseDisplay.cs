@@ -35,9 +35,10 @@ public class PauseDisplay : MonoBehaviour
     }
     public void Reaload()
     {
+        Time.timeScale = 1;
         GameState.score = 0;
         GameState.currentLife = 3;
-        SceneManagement.instance.LoadScene(1);
+        SceneManagement.instance.LoadScene(2);
     }
     public void Menu()
     {
