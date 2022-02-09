@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     CheckPointManager CpM;
     [SerializeField]
+    GameObject FinishCanevas;
+    [SerializeField]
     AnimationHandler animationHandler;
     bool isJumping = true;
     bool CanDash = true;
@@ -193,6 +195,11 @@ public class PlayerMovement : MonoBehaviour
             CpM.SetMyCheckPoint(collision.gameObject);
             collision.GetComponent<Animator>().SetTrigger("Collect");
             Destroy(collision.GetComponent<BoxCollider2D>());
+        }
+        if (collision.CompareTag("FinishPoint"))
+        {
+            FinishCanevas.SetActive(true);
+            Time.timeScale = 0;
         }
 
     }

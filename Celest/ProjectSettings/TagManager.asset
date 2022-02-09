@@ -8,6 +8,7 @@ TagManager:
   - DashRecover
   - Fraise
   - CheckPoint
+  - FinishPoint
   layers:
   - Default
   - TransparentFX
